@@ -9,8 +9,10 @@ if ms.move_updated(now):
   with open('move_last_update', mode = 'w') as f:
     f.write(now)
 
+  now_jst = dt.datetime.strptime(now, '%Y-%m-%dT%H:%M:%SZ') + dt.timedelta(hours=9)
+
   values = [
-    dt.datetime.strptime(now, '%Y-%m-%dT%H:%M:%SZ').strftime('%Y/%m/%d %H:%M:%S')
+    now_jst.strftime('%Y/%m/%d %H:%M:%S')
   ]
 
   gsheet.write_data(
