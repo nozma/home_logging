@@ -3,6 +3,7 @@
 ### 必要な機器
 
 - Raspberry Pi
+    - システムのものを使ったほうが良い。
 - Nature Remo
     - [Nature](https://nature.global/jp/top)
 - CO₂モニター CO₂-mini
@@ -19,19 +20,22 @@
     - [Python Quickstart  |  Sheets API  |  Google Developers](https://developers.google.com/sheets/api/quickstart/python)を参考に設定しておく。
     - `credentials.json`はダウンロードしてこのファイルと同じディレクトリに置いておく。
     - 記録を作成したいSpreadsheetを作成しておく。
+    - Spreadsheetには`sensor`と`move`という名前のシートを用意しておく。
     - 実行時は値だけが追記されていくので、1行目にラベルを書いておく。次の順で入ってくるのでよしなに。
-        1. 時刻
-        2. CO₂濃度（ppm）
-        3. 気温（℃、CO₂モニターの測定値）
-        4. 気温（℃、Nature Remoの測定値）
-        5. 相対湿度（%）
-        6. 明るさ（Nature Remoの独自の値）
-        7. 人感センサ値
+        - `sensor`
+            1. 時刻
+            2. CO₂濃度（ppm）
+            3. 気温（℃、CO₂モニターの測定値）
+            4. 気温（℃、Nature Remoの測定値）
+            5. 相対湿度（%）
+            6. 明るさ（Nature Remoの独自の値）
+        - `move`
+            1. 人感センサー反応時刻
 - 環境変数
     - このディレクトリに`.env`ファイルを作成する。
     - 次の環境変数を用意しておく。
         - `REMO_TOKEN`...Nature RemoのAPIトークン。
         - `SPREADSHEET_ID`...記録を記入したいSpreadsheetのID。URLの中に書いてある。
 - crontab
-    - `log.sh`に実行権限をつけておく。
-    - `log.sh`を実行する感じで設定しておく。
+    - `log.sh`と`log_move.sh`に実行権限をつけておく。
+    - `log.sh`と`log_move.sh`を適度に実行する感じで設定しておく。
