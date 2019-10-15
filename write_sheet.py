@@ -59,8 +59,7 @@ def collect_data():
     d['temp'][0],
     d2['temp_remo'],
     d2['humidity'],
-    d2['illumination'],
-    d2['move']
+    d2['illumination']
   ]
   return(darray)
 
