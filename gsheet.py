@@ -37,13 +37,13 @@ def get_authentication():
   service = build('sheets', 'v4', credentials=creds)
   return service
 
-def write_data(values, service):
+def write_data(values, service, range):
   body = {
     'values': [values],
   }
   service.spreadsheets().values().append(
     spreadsheetId=SPREADSHEET_ID,
-    range='A1',
+    range=range,
     valueInputOption='USER_ENTERED',
     body=body
   ).execute()
