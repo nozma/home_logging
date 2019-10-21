@@ -3,7 +3,7 @@
 ### 必要な機器
 
 - Raspberry Pi
-    - システムのものを使ったほうが良い。
+    - Pythonはシステムのものを使ったほうが良い。
 - Nature Remo
     - [Nature](https://nature.global/jp/top)
 - CO₂モニター CO₂-mini
