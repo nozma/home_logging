@@ -12,13 +12,18 @@ def get_remo():
     'https://api.nature.global/1/devices',
     headers=headers
   )
-  d = response.json()
+  data = response.json()
+  for i in range(len(data)):
+    if(data[i]['name'] == 'remo'):
+      d = data[i]
+      break
+
   return(
     {
-      'temp_remo': d[0]["newest_events"]["te"]["val"],
-      'humidity': d[0]["newest_events"]["hu"]["val"],
-      'illumination': d[0]["newest_events"]["il"]["val"],
-      'move': d[0]["newest_events"]["mo"]["val"]
+      'temp_remo': d["newest_events"]["te"]["val"],
+      'humidity': d["newest_events"]["hu"]["val"],
+      'illumination': d["newest_events"]["il"]["val"],
+      'move': d["newest_events"]["mo"]["val"]
     }
   )
 
