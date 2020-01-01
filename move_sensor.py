@@ -13,8 +13,13 @@ def move_sensor_last_update():
     'https://api.nature.global/1/devices',
     headers=headers
   )
-  d = response.json()
-  return(d[0]['newest_events']['mo']['created_at'])
+  data = response.json()
+  for i in range(len(data)):
+    if(data[i]['name'] == 'remo'):
+      d = data[i]
+      break
+  
+  return(d['newest_events']['mo']['created_at'])
 
 def move_updated(now):
   if not os.path.isfile('move_last_update'):
