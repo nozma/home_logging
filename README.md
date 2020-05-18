@@ -4,7 +4,7 @@
 
 - Raspberry Pi
     - Pythonはシステムのものを使ったほうが良い。
-- Nature Remo
+- Nature Remo  / Nature Remo E
     - [Nature](https://nature.global/jp/top)
 - CO₂モニター CO₂-mini
     - [CO₂モニター CO2-mini | 自然環境測定器 - 製品情報 - 計測器のカスタム](https://www.kk-custom.co.jp/emp/CO2-mini.html)
@@ -31,11 +31,19 @@
             6. 明るさ（Nature Remoの独自の値）
         - `move`
             1. 人感センサー反応時刻
+    - 電力消費記録用のSpreadsheetは別にした。
+        - `energy`という名前のシートを用意しておく。
+        - 値は次の順で記録されていく。
+            1. 更新時刻
+            2. 積算電力
+                - 上限値を上回ったら0に戻るため、消費電力は前回との差分が正か負かで上手く判断する必要がある。
+            3. 瞬間電力
 - 環境変数
     - このディレクトリに`.env`ファイルを作成する。
     - 次の環境変数を用意しておく。
         - `REMO_TOKEN`...Nature RemoのAPIトークン。
         - `SPREADSHEET_ID`...記録を記入したいSpreadsheetのID。URLの中に書いてある。
+        - `SPREADSHEET_ID_REMOE`...電力を記録したいSpreadsheetのID。
 - crontab
     - `log.sh`と`log_move.sh`に実行権限をつけておく。
     - `log.sh`と`log_move.sh`を適度に実行する感じで設定しておく。
