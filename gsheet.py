@@ -12,7 +12,6 @@ import remo
 import co2
 
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
-SPREADSHEET_ID = os.environ.get('SPREADSHEET_ID')
 
 def get_authentication():
   creds = None
@@ -37,12 +36,12 @@ def get_authentication():
   service = build('sheets', 'v4', credentials=creds)
   return service
 
-def write_data(values, service, range):
+def write_data(spreadsheet_id, values, service, range):
   body = {
     'values': [values],
   }
   service.spreadsheets().values().append(
-    spreadsheetId=SPREADSHEET_ID,
+    spreadsheetId=spreadsheet_id,
     range=range,
     valueInputOption='USER_ENTERED',
     body=body
@@ -63,3 +62,11 @@ def collect_data():
   ]
   return(darray)
 
+def collect_remoe_data():
+  d = remo.get_remo_e()
+  darray = [
+    d['updated_at'],
+    d['normal_direction_cumlative_electric_energy'],
+    d['measured_instantaneous']
+  ]
+  return(darray)

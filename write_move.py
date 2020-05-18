@@ -2,6 +2,7 @@
 import gsheet
 import move_sensor as ms
 import datetime as dt
+import os.path
 
 now = ms.move_sensor_last_update()
 
@@ -16,6 +17,7 @@ if ms.move_updated(now):
   ]
 
   gsheet.write_data(
+    spreadsheet_id=os.environ.get('SPREADSHEET_ID'), # 環境計測情報記録用シートID
     values=values, 
     service=gsheet.get_authentication(),
     range='move!A1'
