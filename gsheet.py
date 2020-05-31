@@ -2,11 +2,11 @@
 from __future__ import print_function
 import pickle
 import os.path
+import datetime as dt
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-import pandas as pd
-import numpy as np
+#import pandas as pd
 
 import remo
 import co2
@@ -49,13 +49,11 @@ def write_data(spreadsheet_id, values, service, range):
 
 def collect_data():
   d = co2.get_co2()
-  time = d.index.values[0]
-  time = pd.to_datetime(time)
   d2 = remo.get_remo()
   darray = [
-    time.strftime('%Y/%m/%d %H:%M:%S'),
-    str(d['co2'][0]),
-    d['temp'][0],
+    d[0].strftime('%Y/%m/%d %H:%M:%S'),
+    str(d[1]),
+    d[2],
     d2['temp_remo'],
     d2['humidity'],
     d2['illumination']
