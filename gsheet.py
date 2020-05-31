@@ -6,7 +6,6 @@ import datetime as dt
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-#import pandas as pd
 
 import remo
 import co2
@@ -52,7 +51,7 @@ def collect_data():
   d2 = remo.get_remo()
   darray = [
     d[0].strftime('%Y/%m/%d %H:%M:%S'),
-    str(d[1]),
+    d[1],
     d[2],
     d2['temp_remo'],
     d2['humidity'],
