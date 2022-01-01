@@ -5,3 +5,5 @@ credentials.json
 token.pickle
 __pycache__/
 move_last_update
+latest_environ_data.csv
+last_notified
