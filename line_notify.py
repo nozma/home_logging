@@ -40,9 +40,20 @@ if(os.path.exists(csv_path)):
     with open(csv_path, 'r') as f:
         reader = csv.reader(f)
         data = reader.__next__()
-        temp = data[3] # co2センサーの温度 
-        hum = data[4]  # nature remoの湿度
+        co2 = data[1]    # co2センサーのco2
+        temp = data[2]   # co2センサーの温度 
+        temp_r = data[3] # nature remoの温度
+        hum = data[4]    # nature remoの湿度
+        il = data[5]     # nature remoの明るさ
+    message = ""
     if float(hum) <= 45.0:
-        send_line_notify(
-            f"湿度が45%を下回りました。現在{hum}%です。加湿しましょう。"
-        )
+        message += "加湿"
+    if float(co2) >= 900:
+        if len(message) > 0:
+            message += "、"
+        message += "換気"
+    if len(message) > 0:
+        message += "をしましょう。\n"
+    message += f"現在、温度{round(float(temp), 1)}℃、相対湿度{hum}%、CO₂濃度{co2}ppmです。"
+    if float(hum) <= 45.0 or float(co2) >= 900:
+        send_line_notify(message)
