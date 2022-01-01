@@ -45,6 +45,9 @@
         - `REMO_TOKEN`...Nature RemoのAPIトークン。
         - `SPREADSHEET_ID`...記録を記入したいSpreadsheetのID。URLの中に書いてある。
         - `SPREADSHEET_ID_REMOE`...電力を記録したいSpreadsheetのID。
+        - `LINE_NOTIFY_API_TOKEN`...LINE NotifyのAPIトークン。LINEにアラートを飛ばすために使用。
 - crontab
-    - `log.sh`と`log_move.sh`に実行権限をつけておく。
-    - `log.sh`と`log_move.sh`を適度に実行する感じで設定しておく。
+    - 次のファイルに実行権限を付けておき、適度に実行する。
+        - `log.sh` ... 部屋の環境記録
+        - `log_move.sh` ... nature remoの人感センサー記録
+        - `line_notify.sh` ... 部屋の環境が良くない場合にLINEに通知する
