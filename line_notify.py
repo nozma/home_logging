@@ -21,7 +21,7 @@ def send_line_notify(notification_message):
         last_notified_dt = 0.0
 
     # 通知処理
-    if(last_notified_dt + 600 < now): # 前回から10分以上経過していたら通知
+    if(last_notified_dt + 1800 < now): # 前回から30分以上経過していたら通知
         data = {
             'message': notification_message
         }
