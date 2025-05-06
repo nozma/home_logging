@@ -1,6 +1,6 @@
 /logs
 .env
-credentials.json
+credentials*
 .vscode/
 token.pickle
 __pycache__/

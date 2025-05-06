@@ -33,9 +33,9 @@ def collect_data():
   d = co2.get_co2()
   d2 = remo.get_remo()
   darray = [
-    d[0].strftime('%Y/%m/%d %H:%M:%S'),
+    d[0].strftime('%Y-%m-%d %H:%M:%S'),
     d[1],
-    d[2],
+    round(d[2], 4),
     d2['temp_remo'],
     d2['humidity'],
     d2['illumination']
@@ -46,7 +46,7 @@ def collect_remoe_data():
   d = remo.get_remo_e()
   darray = [
     d['updated_at'],
-    d['normal_direction_cumlative_electric_energy'],
+    round(d['normal_direction_cumlative_electric_energy'], 4),
     d['measured_instantaneous']
   ]
   return(darray)

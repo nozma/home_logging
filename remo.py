@@ -55,7 +55,7 @@ def get_remo_e():
       break
 
   updated_jst = dt.datetime.strptime(updated_at, '%Y-%m-%dT%H:%M:%SZ') + dt.timedelta(hours=9)
-  updated_jst_formatted = updated_jst.strftime('%Y/%m/%d %H:%M:%S')
+  updated_jst_formatted = updated_jst.strftime('%Y-%m-%d %H:%M:%S')
 
   # 単位情報に基づいてkWh単位にするための係数を求める（合ってるのか…？）
   if cumlative_electric_energy_unit <= 4:
