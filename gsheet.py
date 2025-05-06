@@ -46,7 +46,7 @@ def collect_remoe_data():
   d = remo.get_remo_e()
   darray = [
     d['updated_at'],
-    d['normal_direction_cumlative_electric_energy'],
+    round(d['normal_direction_cumlative_electric_energy'], 4),
     d['measured_instantaneous']
   ]
   return(darray)

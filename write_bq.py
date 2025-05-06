@@ -17,3 +17,8 @@ errors = client.insert_rows(table, [values])
 #    writer = csv.writer(f)
 #    writer.writerow(values)
 
+## 消費電力情報の記録
+values = gsheet.collect_remoe_data()
+
+table = client.get_table("home_log.energy")
+errors = client.insert_rows(table, [values])
